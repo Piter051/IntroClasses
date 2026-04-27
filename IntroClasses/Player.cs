@@ -2,26 +2,30 @@ namespace IntroClasses;
 
 public class Player
 {
-    private int _x;
-    private int _y;
+    private Vector2 _position = new Vector2(0, 0);
     private string _avatar = "@";
+
+    public Player(Vector2 startingPosition)
+    {
+        _position = startingPosition;
+    }
 
     public void Display()
     {
-        Console.SetCursorPosition(_x,_y);
+        Console.SetCursorPosition(_position.X,_position.Y);
         Console.Write(_avatar);
     }
 
     public void Move(int diffX, int diffY)
     {
-        int targetX = _x + diffX;
-        int targetY = _y + diffY;
+        int targetX = _position.X + diffX;
+        int targetY = _position.Y + diffY;
         
 
         if (targetX >= 0 && targetX < Console.BufferWidth && targetY >= 0 && targetY < Console.BufferHeight) 
         {
-            _x = targetX;
-            _y = targetY;
+            _position.X = targetX;
+            _position.Y = targetY;
         }
     }
 
@@ -29,7 +33,7 @@ public class Player
     {
         bool isPlaying = true;
         ConsoleKeyInfo input = Console.ReadKey(true);
-        Console.SetCursorPosition(_x, _y);
+        Console.SetCursorPosition(_position.X, _position.Y);
         Console.Write(" ");
         switch (input.Key)
         {
