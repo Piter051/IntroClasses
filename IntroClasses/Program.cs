@@ -1,8 +1,14 @@
 ﻿using IntroClasses;
 
+Dictionary<ConsoleKey, Vector2> directions = new Dictionary<ConsoleKey, Vector2>();
+directions[ConsoleKey.A] = new Vector2(-1, 0);
+directions[ConsoleKey.D] = new Vector2(1, 0);
+directions[ConsoleKey.W] = new Vector2(0, -1);
+directions[ConsoleKey.S] = new Vector2(0, 1);
+
 bool isPlaying = true;
 Vector2 startingPosition = new Vector2(4, 2);
-Player hero = new Player(startingPosition);
+Player hero = new Player(startingPosition, directions);
 startingPosition.X = 0;
 startingPosition.Y = 0;
     

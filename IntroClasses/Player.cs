@@ -2,9 +2,11 @@ namespace IntroClasses;
 
 public class Player : Character
 {
+    private readonly Dictionary<ConsoleKey, Vector2> _inputMap;
 
-    public Player(Vector2 startingPosition) : base(startingPosition)
+    public Player(Vector2 startingPosition, Dictionary<ConsoleKey, Vector2> inputMap) : base(startingPosition)
     {
+        _inputMap = inputMap;
     }
 
     
@@ -14,20 +16,14 @@ public class Player : Character
         ConsoleKeyInfo input = Console.ReadKey(true);
         Console.SetCursorPosition(_position.X, _position.Y);
         Console.Write(" ");
+
+        if (_inputMap.ContainsKey(input.Key))
+        {
+            Vector2 direction = _inputMap[input.Key];
+            Move(direction);
+        }
         switch (input.Key)
         {
-            case ConsoleKey.S:
-                Move(0, 1);
-                break;
-            case ConsoleKey.W:
-                Move(0, -1);
-                break;
-            case ConsoleKey.A:
-                Move(-1, 0);
-                break;
-            case ConsoleKey.D:
-                Move(1, 0);
-                break;
             case ConsoleKey.Q:
                 isPlaying = false;
                 break;
