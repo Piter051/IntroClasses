@@ -9,27 +9,31 @@ public class Player : Character
         _inputMap = inputMap;
     }
 
-    
-    public override bool TakeTurn()
+
+    public override bool TakeTurn(Map map)
     {
         bool isPlaying = true;
         ConsoleKeyInfo input = Console.ReadKey(true);
         Console.SetCursorPosition(_position.X, _position.Y);
-        Console.Write(" ");
+        Console.Write(map.GetCell(_position.X, _position.Y).visuals);
 
         if (_inputMap.ContainsKey(input.Key))
         {
             Vector2 direction = _inputMap[input.Key];
             Move(direction);
         }
-        switch (input.Key)
+        else
         {
-            case ConsoleKey.Q:
-                isPlaying = false;
-                break;
+            switch (input.Key)
+            {
+                case ConsoleKey.Q:
+                    isPlaying = false;
+                    break;
+            }
         }
-   
+
         Display();
         return isPlaying;
+        
     }
 }

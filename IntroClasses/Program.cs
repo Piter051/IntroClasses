@@ -30,7 +30,7 @@ while (isPlaying)
 {
     foreach (Character character in characters)
     {
-        isPlaying = character.TakeTurn();
+        isPlaying = character.TakeTurn(map);
     }
 }
 Console.WriteLine("Goodbye");

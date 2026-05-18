@@ -34,4 +34,8 @@ public class Map
             Console.WriteLine();
         }
     }
+    public Cell GetCell(int x, int y)
+    {
+        return _cells[y][x];
+    }
 }    
