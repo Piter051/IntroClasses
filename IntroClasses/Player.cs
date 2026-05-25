@@ -15,7 +15,9 @@ public class Player : Character
         bool isPlaying = true;
         ConsoleKeyInfo input = Console.ReadKey(true);
         Console.SetCursorPosition(_position.X, _position.Y);
-        Console.Write(map.GetCell(_position.X, _position.Y).visuals);
+        Cell cell = map.GetCell(_position.X, _position.Y);
+        Console.Write(cell.visuals);
+        cell.Occupant = null;
 
         if (_inputMap.ContainsKey(input.Key))
         {

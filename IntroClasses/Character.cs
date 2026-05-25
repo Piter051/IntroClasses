@@ -28,14 +28,15 @@ public abstract class Character
         
         if (targetY >= 0 && targetY < Console.BufferHeight && targetY < map.GetHeight())
         {
-            if (targetX >= 0 && targetX < Console.BufferWidth && targetX < map.GetRowWidth(targetY)) 
+            if (targetX >= 0 && targetX < Console.BufferWidth && targetX < map.GetRowWidth(targetY))
             {
-
-                if (map.GetCell(targetX, targetY).visuals != '#')
+                Cell cell = map.GetCell(targetX, targetY);
+                if (cell.visuals != '#' && cell.Occupant == null)
                 {
                     _position.Y = targetY;
                     _position.X = targetX;
-                    
+                    cell.Occupant = this;
+
                 }
             }
         }    
