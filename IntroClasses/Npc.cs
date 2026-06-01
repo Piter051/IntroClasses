@@ -18,12 +18,15 @@ public class Npc : Character
     {
         Console.SetCursorPosition(_position.X, _position.Y);
         Cell cell = map.GetCell(_position.X, _position.Y);
-        Console.Write(cell.visuals);
-        cell.Occupant = null;
+        
         
         int index = Random.Shared.Next(availableDirections.Count);
-        Vector2 direction = availableDirections[index];
-        Move(direction, map);
+        Vector2 direction = availableDirections[index]; 
+        if (Move(direction, map))
+        {
+            Console.Write(cell.visuals);
+            cell.Occupant = null;
+        }
         Display();
         return true;
     }
