@@ -24,7 +24,7 @@ public class Player : Character
             bool moved = Move(direction, map);
             if (moved)
             {
-                Console.Write(cell.visuals);
+                cell.Display();
                 cell.Occupant = null; 
             }
         }

@@ -28,11 +28,15 @@ public abstract class Character: GameObject
             if (targetX >= 0 && targetX < Console.BufferWidth && targetX < map.GetRowWidth(targetY))
             {
                 Cell cell = map.GetCell(targetX, targetY);
-                if (cell.visuals != '#' && cell.Occupant == null)
+                if (cell.Visuals != '#' && cell.Occupant == null)
                 {
                     _position.Y = targetY;
                     _position.X = targetX;
                     cell.Occupant = this;
+                    if (cell.HasItem())
+                    {
+                        cell.TakeItem();
+                    }
                     return true;
 
                 }

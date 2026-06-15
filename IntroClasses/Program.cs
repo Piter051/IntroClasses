@@ -10,6 +10,8 @@ directions[ConsoleKey.S] = new Vector2(0, 1);
 Map map = new Map();
 map.LoadFromFile("level1.txt");
 
+Item item = new Item('*', new Vector2(3, 5), map);
+
 bool isPlaying = true;
 Vector2 startingPosition = new Vector2(4, 2);
 Player hero = new Player('@', startingPosition, map, directions);
@@ -21,6 +23,7 @@ Character anotherHero = new Npc('$', startingPosition, map);
 List<Character> characters = [hero, anotherHero];
 
 map.Display();
+item.Display();
 
 foreach (Character character in characters)
 {

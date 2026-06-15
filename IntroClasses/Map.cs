@@ -17,7 +17,7 @@ public class Map
             {
                 var character = line[columnIndex];
                 row[columnIndex] = new Cell();
-                row[columnIndex].visuals = character;
+                row[columnIndex].Visuals = character;
             }
         }
     }
@@ -29,7 +29,7 @@ public class Map
         {
             foreach (var cell in row)
             {
-                Console.Write(cell.visuals);
+                Console.Write(cell.Visuals);
             }
             Console.WriteLine();
         }

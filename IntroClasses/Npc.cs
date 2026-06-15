@@ -24,7 +24,7 @@ public class Npc : Character
         Vector2 direction = availableDirections[index]; 
         if (Move(direction, map))
         {
-            Console.Write(cell.visuals);
+            cell.Display();
             cell.Occupant = null;
         }
         Display();
